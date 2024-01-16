@@ -2,7 +2,7 @@ version: "3"
 
 services:
   postgres:
-    image: postgres
+    image: postgres:16
     restart: always
     environment:
       POSTGRES_PASSWORD: 5807590
@@ -12,5 +12,5 @@ services:
       - orders:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-volumes:
-  orders:
+# volumes:
+#   orders:
