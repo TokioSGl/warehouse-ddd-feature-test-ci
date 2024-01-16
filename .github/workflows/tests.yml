@@ -89,15 +89,11 @@ jobs:
 
       - name: Run Postgres
         run: | 
-          docker-compose up -d --build
-        with:
-            compose-file: "./src/warehouse_ddd/docker-compose.yml"
+          docker-compose -f ./src/warehouse_ddd/docker-compose.yml up -d --force-recreate
         
-
-
-      # - uses: isbang/compose-action@v1.5.1
-      #   with:
-      #     compose-file: "./src/warehouse_ddd/docker-compose.yml"
+      - uses: isbang/compose-action@v1.5.1
+        with:
+          compose-file: "./src/warehouse_ddd/docker-compose.yml"
 
       - name: Run Nox
         run: |
