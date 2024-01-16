@@ -87,12 +87,12 @@ jobs:
           restore-keys: |
             ${{ steps.pre-commit-cache.outputs.result }}-
 
+      - name: Run Postgres
+        run: docker-compose up -d --build
+
       - uses: isbang/compose-action@v1.5.1
         with:
-          compose-file: "./src/warehouse_ddd/docker-compose.yml"        
-
-      - name: Run Postgres
-        run: docker-compose up -d
+          compose-file: "./src/warehouse_ddd/docker-compose.yml"
 
       - name: Run Nox
         run: |
